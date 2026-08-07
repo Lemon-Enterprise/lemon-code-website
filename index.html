@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Lemon Code — linguagem experimental modular escrita inteiramente em Lua.">
+  <title>Lemon Code — LC-lang</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="./lc_lang_icon.svg"
+</head>
+<body>
+  <div class="noise"></div>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="Lemon Code">
+      <span class="brand-mark">LC</span>
+      <span>Lemon Code</span>
+    </a>
+    <nav class="nav" id="nav">
+      <a href="#language">Linguagem</a>
+      <a href="#studio">Lemon Studio</a>
+      <a href="#architecture">Arquitetura</a>
+      <a href="#docs">Docs</a>
+      <a href="#extensions">Extensões</a>
+    </nav>
+    <div class="top-actions">
+      <button class="icon-btn" id="themeBtn" title="Alternar tema" aria-label="Alternar tema">☼</button>
+      <a class="github-btn" href="https://github.com/" target="_blank" rel="noreferrer">GitHub ↗</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Abrir menu">☰</button>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero container">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="pulse"></span> LC-lang · Lua 5.1+ · LuaJIT</div>
+        <h1>Uma linguagem feita para <span>crescer.</span></h1>
+        <p class="hero-text">
+          Lemon Code é uma linguagem experimental modular, escrita inteiramente em Lua.
+          Compilador, AST, análise semântica, runtime, backends, formatter, LSP e Lemon Studio
+          vivem em módulos independentes.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#quickstart">Começar agora <span>→</span></a>
+          <a class="btn secondary" href="#language">Explorar a linguagem</a>
+        </div>
+        <div class="stats">
+          <div><strong>100+</strong><span>arquivos Lua</span></div>
+          <div><strong>6</strong><span>tipos LS</span></div>
+          <div><strong>2</strong><span>editores suportados</span></div>
+        </div>
+      </div>
+      <div class="hero-terminal">
+        <div class="terminal-head">
+          <div class="dots"><i></i><i></i><i></i></div>
+          <span>hello.lc</span>
+          <span class="terminal-status">● ready</span>
+        </div>
+        <pre><code><span class="pink">@import</span> &lt;<span class="cyan">LemonStudioFramework</span>&gt;
+<span class="pink">@import</span> &lt;<span class="cyan">Color::Hex</span>&gt;
+
+<span class="purple">pub fn</span> app&lt;<span class="yellow">LSApp</span>&gt;(
+  name = <span class="pink">@[LSString]</span><span class="green">"Meu aplicativo"</span>
+  version = <span class="pink">@[[LSDouble || LSTriple]</span>
+    <span class="pink">-&gt; format =</span> <span class="green">f"v{LSDouble || LSTriple}"</span><span class="pink">]</span>v1.0
+) -&gt; <span class="yellow">Result</span>(LSPlatform::Mobile(<span class="green">"Android"</span>)) {
+  <span class="purple">pub fn</span> widget&lt;<span class="yellow">LSWidget</span>&gt;(let el) {
+    <span class="yellow">LSWidget</span>(|el| -&gt; {
+      <span class="purple">let</span> text = <span class="pink">@new</span> text(
+        text = <span class="green">"Hello World"</span>
+        header = <span class="green">"p"</span>
+        color = Hex::new(<span class="green">"#007DFF"</span>)
+      )
+    })
+  }
+}</code></pre>
+      </div>
+    </section>
+
+    <section class="marquee-wrap" aria-label="Recursos">
+      <div class="marquee">
+        <span>COMPILADOR</span><b>◆</b><span>AST</span><b>◆</b><span>SEMÂNTICA</span><b>◆</b><span>RUNTIME</span><b>◆</b><span>LSP</span><b>◆</b><span>FORMATTER</span><b>◆</b><span>LEMON STUDIO</span><b>◆</b>
+        <span>COMPILADOR</span><b>◆</b><span>AST</span><b>◆</b><span>SEMÂNTICA</span><b>◆</b><span>RUNTIME</span><b>◆</b><span>LSP</span><b>◆</b>
+      </div>
+    </section>
+
+    <section id="language" class="section container">
+      <div class="section-label">01 / A linguagem</div>
+      <div class="section-title-row">
+        <div>
+          <h2>Modular por design.</h2>
+          <p>Responsabilidades separadas para que o projeto possa evoluir sem concentrar toda a linguagem em um único arquivo.</p>
+        </div>
+        <span class="pill">EXPERIMENTAL</span>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card large">
+          <div class="card-icon">λ</div>
+          <h3>Lua por baixo, LC por cima</h3>
+          <p>O runtime e as ferramentas são construídos em Lua 5.1+ ou LuaJIT, mantendo a base simples e portátil.</p>
+          <div class="tag-row"><span>Lua 5.1+</span><span>LuaJIT</span><span>Portable</span></div>
+        </article>
+        <article class="feature-card">
+          <div class="card-icon">◎</div>
+          <h3>AST & semântica</h3>
+          <p>Parsing e análise ficam isolados para facilitar novas regras, diagnósticos e transformações.</p>
+        </article>
+        <article class="feature-card">
+          <div class="card-icon">⌘</div>
+          <h3>Ferramentas</h3>
+          <p>Formatter, LSP, testes e editor fazem parte do ecossistema.</p>
+        </article>
+        <article class="feature-card dark-card">
+          <div class="card-icon">↗</div>
+          <h3>Backends independentes</h3>
+          <p>A arquitetura deixa espaço para novas saídas e integrações no futuro.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="studio" class="section studio-section">
+      <div class="container">
+        <div class="section-label">02 / Lemon Studio</div>
+        <div class="section-title-row">
+          <div>
+            <h2>Apps como manifesto.</h2>
+            <p>O comando <code>run</code> reconhece aplicativos Lemon Studio e produz um manifesto JSON com metadados, plataforma e árvore de widgets.</p>
+          </div>
+          <span class="pill accent">ANDROID READY*</span>
+        </div>
+        <div class="studio-grid">
+          <div class="code-window">
+            <div class="window-tabs"><span class="active">lemon_studio_app.lc</span><span>manifest.json</span></div>
+            <div class="line-code">
+              <div><span class="ln">01</span><span><b class="pink">@import</b> &lt;<b>LemonStudioFramework</b>&gt;</span></div>
+              <div><span class="ln">02</span><span><b class="pink">@import</b> &lt;<b>Color::Hex</b>&gt;</span></div>
+              <div><span class="ln">03</span><span>&nbsp;</span></div>
+              <div><span class="ln">04</span><span><b class="purple">pub fn</b> app&lt;<b class="yellow">LSApp</b>&gt;(</span></div>
+              <div><span class="ln">05</span><span>&nbsp;&nbsp;name = <b class="pink">@[LSString]</b><b class="green">"Meu aplicativo"</b></span></div>
+              <div><span class="ln">06</span><span>&nbsp;&nbsp;identifier = <b class="pink">@[LSString]</b><b class="green">"com.lemon.meuapp"</b></span></div>
+              <div><span class="ln">07</span><span>) -&gt; <b class="yellow">Result</b>(LSPlatform::Mobile(<b class="green">"Android"</b>)) {</span></div>
+              <div><span class="ln">08</span><span>&nbsp;&nbsp;<b class="purple">pub fn</b> widget&lt;<b class="yellow">LSWidget</b>&gt;(let el) {</span></div>
+              <div><span class="ln">09</span><span>&nbsp;&nbsp;&nbsp;&nbsp;<b class="yellow">LSWidget</b>(|el| -&gt; {</span></div>
+              <div><span class="ln">10</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b class="purple">let</b> text = <b class="pink">@new</b> text(</span></div>
+              <div><span class="ln">11</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text = <b class="green">"Hello World"</b></span></div>
+              <div><span class="ln">12</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color = Hex::new(<b class="green">"#007DFF"</b>)</span></div>
+              <div><span class="ln">13</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</span></div>
+              <div><span class="ln">14</span><span>&nbsp;&nbsp;&nbsp;&nbsp;})</span></div>
+              <div><span class="ln">15</span><span>&nbsp;&nbsp;}</span></div>
+              <div><span class="ln">16</span><span>}</span></div>
+            </div>
+          </div>
+          <div class="manifest-card">
+            <div class="manifest-head"><span class="json-dot"></span> run → manifesto.json</div>
+            <pre>{
+  <span class="key">"name"</span>: <span class="str">"Meu aplicativo"</span>,
+  <span class="key">"identifier"</span>: <span class="str">"com.lemon.meuapp"</span>,
+  <span class="key">"platform"</span>: <span class="str">"Android"</span>,
+  <span class="key">"version"</span>: <span class="str">"v1.0"</span>,
+  <span class="key">"widgets"</span>: [
+    {
+      <span class="key">"type"</span>: <span class="str">"text"</span>,
+      <span class="key">"value"</span>: <span class="str">"Hello World"</span>,
+      <span class="key">"color"</span>: <span class="str">"#007DFF"</span>
+    }
+  ]
+}</pre>
+            <div class="manifest-note">* Integração real com Android é o próximo passo natural; o manifesto pode funcionar como IR.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container">
+      <div class="section-label">03 / Tipos</div>
+      <h2>Tipos Lemon Studio.</h2>
+      <div class="types-table">
+        <div class="type-row type-head"><span>Tipo</span><span>Uso</span><span>Exemplo</span></div>
+        <div class="type-row"><span><code>LSInt</code></span><span>Inteiro</span><span>42</span></div>
+        <div class="type-row"><span><code>LSFloat</code></span><span>Ponto flutuante simples</span><span>3.14</span></div>
+        <div class="type-row"><span><code>LSDouble</code></span><span>Dupla precisão / versão</span><span>v1.0</span></div>
+        <div class="type-row"><span><code>LSTriple</code></span><span>Versão com três partes</span><span>v1.0.0</span></div>
+        <div class="type-row"><span><code>LSString</code></span><span>Texto</span><span>"Hello"</span></div>
+        <div class="type-row"><span><code>LSBoolean</code></span><span>Booleano</span><span>True / False</span></div>
+      </div>
+    </section>
+
+    <section id="architecture" class="section architecture-section">
+      <div class="container">
+        <div class="section-label">04 / Arquitetura</div>
+        <div class="section-title-row">
+          <div>
+            <h2>Um ecossistema, vários módulos.</h2>
+            <p>Cada camada tem uma responsabilidade clara. Isso permite experimentar sem reescrever o projeto inteiro.</p>
+          </div>
+        </div>
+        <div class="architecture">
+          <div class="arch-node root">Lemon Code<br><small>LC-lang</small></div>
+          <div class="arch-line"></div>
+          <div class="arch-grid">
+            <div class="arch-node"><strong>Frontend</strong><span>Lexer · Parser · AST</span></div>
+            <div class="arch-node"><strong>Análise</strong><span>Semântica · Diagnósticos</span></div>
+            <div class="arch-node"><strong>Execution</strong><span>Runtime · Backends</span></div>
+            <div class="arch-node"><strong>Developer Tools</strong><span>Formatter · LSP</span></div>
+            <div class="arch-node"><strong>Lemon Studio</strong><span>Apps · Widgets · Manifest</span></div>
+            <div class="arch-node"><strong>Quality</strong><span>Testes · Examples</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="quickstart" class="section container">
+      <div class="section-label">05 / Quick start</div>
+      <div class="quick-grid">
+        <div>
+          <h2>Primeiro comando.<br><span>Depois, experimente.</span></h2>
+          <p>O único requisito é Lua 5.1+ ou LuaJIT. No Windows, use o <code>luajit</code> disponível no ambiente.</p>
+        </div>
+        <div class="commands">
+          <div class="command"><span>Árvore sintática</span><button data-copy="luajit src/lc.lua parse examples/basics.lc">Copiar</button><code>luajit src/lc.lua parse examples/basics.lc</code></div>
+          <div class="command"><span>Validar</span><button data-copy="luajit src/lc.lua check examples/lemon_studio_app.lc">Copiar</button><code>luajit src/lc.lua check examples/lemon_studio_app.lc</code></div>
+          <div class="command"><span>Executar / manifesto</span><button data-copy="luajit src/lc.lua run examples/lemon_studio_app.lc">Copiar</button><code>luajit src/lc.lua run examples/lemon_studio_app.lc</code></div>
+          <div class="command"><span>Testes</span><button data-copy="luajit tests/run.lua">Copiar</button><code>luajit tests/run.lua</code></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="docs" class="section docs-section">
+      <div class="container">
+        <div class="section-label">06 / Documentação</div>
+        <div class="docs-grid">
+          <a class="doc-card" href="docs/grammar.md"><span>01</span><h3>Gramática</h3><p>Regras da linguagem e estrutura sintática.</p><b>Ver documento →</b></a>
+          <a class="doc-card" href="docs/lspec.md"><span>02</span><h3>Especificação .lspec</h3><p>Formato e validação de pacotes Lemon.</p><b>Ver documento →</b></a>
+          <a class="doc-card" href="docs/architecture.md"><span>03</span><h3>Arquitetura</h3><p>Mapa dos módulos e responsabilidades.</p><b>Ver documento →</b></a>
+          <a class="doc-card" href="#examples"><span>04</span><h3>Examples</h3><p>Programas de exemplo para aprender LC.</p><b>Explorar →</b></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="extensions" class="section container">
+      <div class="section-label">07 / Editor support</div>
+      <h2>Leve LC para seu editor.</h2>
+      <div class="editor-grid">
+        <article class="editor-card">
+          <div class="editor-logo">VS</div>
+          <div><h3>Visual Studio Code</h3><p>Suporte a <code>.lc</code> e <code>.lspec</code>, syntax highlighting, language configuration e snippets.</p></div>
+          <a href="extensions/vscode-lc-lang/README.md">README →</a>
+        </article>
+        <article class="editor-card">
+          <div class="editor-logo">NV</div>
+          <div><h3>Neovim</h3><p>Sintaxe, indentação, comentários, comandos e integração opcional com LSP.</p></div>
+          <a href="extensions/nvim-lc-lang/README.md">README →</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="examples" class="section container cta-section">
+      <div class="cta">
+        <div class="cta-copy">
+          <div class="eyebrow">OPEN · EXPERIMENTAL · MODULAR</div>
+          <h2>Pronto para colocar um limão no código?</h2>
+          <p>Explore a arquitetura, rode os exemplos e transforme a ideia em software.</p>
+        </div>
+        <div class="cta-actions">
+          <a class="btn primary" href="#quickstart">Começar com LC →</a>
+          <a class="btn secondary" href="https://github.com/" target="_blank" rel="noreferrer">Abrir no GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div><span class="brand-mark">LC</span> <strong>Lemon Code</strong><small>Experimental language ecosystem</small></div>
+      <div class="footer-links"><a href="#language">Linguagem</a><a href="#docs">Docs</a><a href="#extensions">Editores</a><a href="#quickstart">Quick start</a></div>
+      <span>© 2026 Lemon Code</span>
+    </div>
+  </footer>
+  <div id="toast" class="toast">Copiado!</div>
+  <script src="app.js"></script>
+</body>
+</html>
